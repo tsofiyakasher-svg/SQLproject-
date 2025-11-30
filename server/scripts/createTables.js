@@ -39,4 +39,4 @@ async function createTables() {
 }
 module.exports = { createTables };
 
-createTables();
+// createTables();
