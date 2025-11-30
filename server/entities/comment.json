@@ -1,6 +1,6 @@
 {
   "id": "INT PRIMARY KEY AUTO_INCREMENT",
   "postId": "INT",
-  "name":"VARCHAR(255)",
-  "body":"VARCHAR(255)"
+  "name": "VARCHAR(255)",
+  "body": "VARCHAR(255)"
 }

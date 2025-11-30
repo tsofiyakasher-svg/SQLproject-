@@ -2,9 +2,6 @@ const connection = require("../db/connection");
 const fs = require("fs");
 const path = require("path");
 
-/**
- * Creates database tables based on entity definitions in /entities directory
- */
 async function createTables() {
   const pathd = path.join(__dirname, "..", "entities");
   let filesArr = fs.readdirSync(pathd);
@@ -39,15 +36,7 @@ async function createTables() {
     }
   }
   connection.end();
-  // TODO: Execute each CREATE TABLE query using the connection
-  // Hint: Use connection.promise().query() for async/await or connection.query() for callbacks
-  // Hint: Add error handling for each query execution
-
-  // TODO: Close the connection after all tables are created
-  // Hint: Use connection.end()
 }
-// Export the function
 module.exports = { createTables };
 
-// Uncomment the line below to run this script directly
-// createTables();s
+createTables();
