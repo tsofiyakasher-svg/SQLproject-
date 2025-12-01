@@ -17,7 +17,9 @@ router.post("/signUp", async (req, res) => {
         email,
         phone
       );
-      return res.json({ message: "User created successfully" });
+      result.message = "User created successfully";
+      console.log(result);
+      return res.json(result);
     } else {
       return res.status(400).json({ message: "The user already exists" });
     }

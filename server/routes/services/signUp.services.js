@@ -10,14 +10,19 @@ function userExist(user_name) {
 }
 function addUser(user_name, password, email, phone) {
   return new Promise((resolve, reject) => {
-    const userquery = `INSERT INTO user (user_name, email, phone) VALUES ('${user_name}', '${email}', '${phone}');`;
-    connection.query(userquery, (err, result) => {
+    const queryUser = `INSERT INTO user (user_name, email, phone) VALUES ('${user_name}', '${email}', '${phone}');`;
+    connection.query(queryUser, (err, result) => {
       if (err) return reject(err);
       const userId = result.insertId;
-      const passwordquery = `INSERT INTO password (user_id, password) VALUES (${userId}, '${password}');`;
-      connection.query(passwordquery, (err, result) => {
+      const queryPassword = `INSERT INTO password (user_id, password) VALUES (${userId}, '${password}');`;
+      connection.query(queryPassword, (err, result) => {
         if (err) return reject(err);
-        resolve(result);
+        resolve({
+          id: userId,
+          user_name: user_name,
+          email: email,
+          phone: phone,
+        });
       });
     });
   });

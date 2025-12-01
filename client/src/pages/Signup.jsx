@@ -1,19 +1,21 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router";
 import "../App.css";
 
-function SignUp() {
+function Signup() {
   const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [password, setPassword] = useState("");
   const [verified, setVerified] = useState("");
   const [message, setMessage] = useState();
   const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (password !== verified) {
+    if (!username || !password || !email || !phone) {
+      setMessage("Please fill in all fields.");
+    } else if (password !== verified) {
       setMessage("Your passwords don’t match");
     } else {
       fetch("http://localhost:3000/signUp/signUp", {
@@ -31,9 +33,18 @@ function SignUp() {
       })
         .then((response) => response.json())
         .then((res) => {
+          console.log(res.message);
           if (res.message === "User created successfully") {
             setMessage("User created successfully");
-            localStorage.setItem("ActiveUser", JSON.stringify(res.user));
+            localStorage.setItem(
+              "ActiveUser",
+              JSON.stringify({
+                id: res.id,
+                user_name: res.user_name,
+                email: res.email,
+                phone: res.phone,
+              })
+            );
             navigate("/home");
           } else if (res.message === "The user already exists") {
             setMessage("The user already exists");
@@ -102,4 +113,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default Signup;

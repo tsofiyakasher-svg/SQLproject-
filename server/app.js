@@ -3,6 +3,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var connection = require("./db/connection");
+const cors = require("cors");
 
 var userRouter = require("./routes/user.routs");
 var todoRouter = require("./routes/todo.routs");
@@ -12,6 +13,7 @@ var loginRouter = require("./routes/login.routs");
 var commentRouter = require("./routes/comment.routs");
 
 var app = express();
+app.use(cors());
 
 app.use(logger("dev"));
 app.use(express.json());
