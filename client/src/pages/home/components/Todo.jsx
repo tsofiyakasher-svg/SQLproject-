@@ -78,7 +78,7 @@ function Todo() {
   async function deleteToDo(id) {
     try {
       const response = await fetch(
-        `http://localhost:3000/todo/delete-todo?user_id=${ActiveUser.id}`,
+        `http://localhost:3000/todo/delete-todo?id=${id}`,
         {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },

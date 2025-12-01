@@ -37,7 +37,7 @@ router.post("/add-todo", async (req, res) => {
 
 router.delete("/delete-todo", async (req, res) => {
   try {
-    const reqId = req.query.user_id;
+    const reqId = req.query.id;
     const todo = await todoService.deleteTodo(reqId);
     res.json(todo);
   } catch (err) {
