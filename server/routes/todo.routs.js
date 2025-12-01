@@ -16,13 +16,21 @@ router.get("/", async (req, res) => {
 router.post("/add-todo", async (req, res) => {
   try {
     const reqDetails = req.body;
-    const todo = await todoService.createTodo(
+    const todos = await todoService.createTodo(
       reqDetails.user_id,
       reqDetails.title,
       reqDetails.completed
     );
+    const todo = {
+      id: todos.insertId,
+      user_id: reqDetails.user_id,
+      title: reqDetails.title,
+      completed: reqDetails.completed || false,
+    };
     res.json(todo);
   } catch (err) {
+    console.log(" ERROR:", err);
+
     res.status(500).json({ error: err });
   }
 });
