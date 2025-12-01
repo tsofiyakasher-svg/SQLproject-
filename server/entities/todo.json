@@ -1,6 +1,6 @@
 {
   "id": "INT PRIMARY KEY AUTO_INCREMENT",
-  "userId": "INT",
+  "user_id": "INT",
   "title":"VARCHAR(255)",
   "completed":"BOOLEAN DEFAULT FALSE"
 }

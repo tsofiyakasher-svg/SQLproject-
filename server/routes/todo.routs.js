@@ -1,6 +1,55 @@
 const express = require("express");
 const router = express.Router();
 const connection = require("../db/connection");
-const todoService = require("../routes/services/todo.service");
+const todoService = require("../routes/services/todo.services");
+
+router.get("/", async (req, res) => {
+  try {
+    const reqId = req.body;
+    const todos = await todoService.getAllTodos(reqId.user_id);
+    res.json(todos);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+});
+
+router.post("/add-todo", async (req, res) => {
+  try {
+    const reqDetails = req.body;
+    const todo = await todoService.createTodo(
+      reqDetails.user_id,
+      reqDetails.title,
+      reqDetails.completed
+    );
+    res.json(todo);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+});
+
+router.delete("/delete-todo", async (req, res) => {
+  try {
+    const reqId = req.body;
+    const todo = await todoService.deleteTodo(reqId.id);
+    res.json(todo);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+});
+
+router.put("/update-todo", async (req, res) => {
+  try {
+    const reqDetails = req.body;
+    const todo = await todoService.updateTodo(
+      reqDetails.user_id,
+      reqDetails.title,
+      reqDetails.completed,
+      reqDetails.id
+    );
+    res.json(todo);
+  } catch (err) {
+    res.status(500).json({ error: err });
+  }
+});
 
 module.exports = router;

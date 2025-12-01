@@ -1,6 +1,6 @@
 {
   "id": "INT PRIMARY KEY AUTO_INCREMENT",
-  "userName": "VARCHAR(255)",
+  "user_name": "VARCHAR(255)",
   "email":"VARCHAR(255)",
   "phone":"VARCHAR(10)"
 }

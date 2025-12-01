@@ -3,7 +3,6 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var connection = require("./db/connection");
-// var create = require("./scripts/createTables");
 
 var userRouter = require("./routes/user.routs");
 var todoRouter = require("./routes/todo.routs");
