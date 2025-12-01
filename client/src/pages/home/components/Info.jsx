@@ -3,8 +3,8 @@ function Info() {
   return (
     <>
       <h2>User Information</h2>
-      <ul>
-        <li>Username: {user.username}</li>
+      <ul style={{ listStyle: "none" }}>
+        <li>Username: {user.user_name}</li>
         <li>Email: {user.email}</li>
         <li>Phone: {user.phone}</li>
       </ul>

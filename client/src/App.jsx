@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 
 import Login from "./pages/Login";
-
+import "./App.css";
 import Home from "./pages/home/Home";
 import Info from "./pages/home/components/Info";
 import Todo from "./pages/home/components/Todo";

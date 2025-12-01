@@ -1,0 +1,215 @@
+/* === שורה עליונה ===
+.top-bar {
+  background: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 16px 40px;
+  font-family: "Inter", sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.top-bar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0;
+  color: #222;
+}
+
+.greeting {
+  font-size: 16px;
+  color: #444;
+  margin: 0;
+}
+
+.greeting strong {
+  color: #007bff;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: #666;
+  margin: 0;
+  flex: 1;
+  text-align: center;
+}
+
+/* === כפתור התנתקות === */
+/* .logout {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #ff4d4d;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.logout:hover {
+  background: #e23232;
+}
+
+/* === קישורים מהירים === */
+/* .quick-links {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.nav-card {
+  background: white;
+  padding: 12px 20px;
+  text-decoration: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: 0.25s;
+  border: 1px solid #eee;
+  color: #333;
+  font-size: 15px;
+  font-weight: 500;
+  min-width: 100px;
+  text-align: center;
+}
+
+.nav-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  background: #f8f9fa;
+}
+
+.nav-card h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+
+.nav-card p {
+  margin: 0;
+  color: #666;
+  font-size: 13px;
+/* }  */
+.top-bar {
+  width: 100%;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 16px 40px;
+  font-family: "Inter", sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+.top-bar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0;
+  color: #222;
+  white-space: nowrap;
+}
+
+.greeting {
+  font-size: 16px;
+  color: #444;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.greeting strong {
+  color: #007bff;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: #666;
+  margin: 0;
+  flex: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* === כפתור התנתקות === */
+.logout {
+  padding: 8px 16px;
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+  white-space: nowrap;
+}
+
+.logout:hover {
+  background: #e23232;
+}
+
+/* === קישורים מהירים === */
+.quick-links {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.nav-card {
+  background: white;
+  padding: 12px 20px;
+  text-decoration: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: 0.25s;
+  border: 1px solid #eee;
+  color: #333;
+  font-size: 15px;
+  font-weight: 500;
+  min-width: 100px;
+  text-align: center;
+  flex: 1;
+  max-width: 150px;
+}
+
+.nav-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  background: #f8f9fa;
+}
+
+/* === תוכן הדף === */
+.page-content {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
