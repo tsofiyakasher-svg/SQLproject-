@@ -32,8 +32,19 @@ function Login() {
           res.message === "Incorrect password"
         ) {
           setMessage("Incorrect username or password");
+        } else if (!res[0].id) {
+          setMessage("שגיאה בשרת: אין נתוני משתמש");
+          return;
         } else {
-          localStorage.setItem("ActiveUser", JSON.stringify(res.user));
+          localStorage.setItem(
+            "ActiveUser",
+            JSON.stringify({
+              id: res[0].id,
+              user_name: res[0].user_name,
+              email: res[0].email,
+              phone: res[0].phone,
+            })
+          );
           setMessage("");
           navigate("/home");
         }
@@ -69,7 +80,7 @@ function Login() {
           <button type="submit">log in</button>
 
           <p>{message}</p>
-          <Link to="SingUp">Sing Up</Link>
+          <Link to="/singup">Sing Up</Link>
         </form>
       </div>
     </>

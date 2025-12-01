@@ -1,3 +1,5 @@
-function Posts() {}
+function Posts() {
+  return <></>;
+}
 
 export default Posts;
