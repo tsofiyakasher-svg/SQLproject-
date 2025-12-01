@@ -5,8 +5,8 @@ const todoService = require("../routes/services/todo.services");
 
 router.get("/", async (req, res) => {
   try {
-    const reqId = req.body;
-    const todos = await todoService.getAllTodos(reqId.user_id);
+    const reqId = req.query.user_id;
+    const todos = await todoService.getAllTodos(reqId);
     res.json(todos);
   } catch (err) {
     res.status(500).json({ error: err });
@@ -37,17 +37,18 @@ router.delete("/delete-todo", async (req, res) => {
   }
 });
 
-router.put("/update-todo", async (req, res) => {
+router.patch("/update-todo", async (req, res) => {
   try {
     const reqDetails = req.body;
     const todo = await todoService.updateTodo(
-      reqDetails.user_id,
       reqDetails.title,
       reqDetails.completed,
       reqDetails.id
     );
     res.json(todo);
   } catch (err) {
+    console.log("UPDATE ERROR:", err);
+
     res.status(500).json({ error: err });
   }
 });

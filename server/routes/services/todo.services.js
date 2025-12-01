@@ -1,6 +1,7 @@
 const connection = require("../../db/connection");
-function getAllTodos(user_id) {
-  const query = `SELECT * FROM todo WHERE user_id='${user_id}'`;
+function getAllTodos(reqId) {
+  console.log("userId:", reqId);
+  const query = `SELECT * FROM todo WHERE user_id=${reqId}`;
   return new Promise((resolve, reject) => {
     connection.query(query, (err, result) => {
       if (err) return reject(err);
@@ -29,8 +30,19 @@ function deleteTodo(id) {
   });
 }
 
-function updateTodo(user_id, title, completed, id) {
-  const query = `UPDATE todo SET title='${title}', completed='${completed}' WHERE id='${id}'`;
+function updateTodo(title, completed, id) {
+  if (completed === true) completed = 1;
+  if (completed === false) completed = 0;
+
+  let query = "UPDATE todo SET ";
+
+  if (title !== undefined) query += `title='${title}', `;
+  if (completed !== undefined) query += `completed='${completed}', `;
+
+  query = query.slice(0, -2);
+
+  query += ` WHERE id='${id}'`;
+
   return new Promise((resolve, reject) => {
     connection.query(query, (err, result) => {
       if (err) return reject(err);

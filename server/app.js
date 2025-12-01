@@ -3,6 +3,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var connection = require("./db/connection");
+var cors = require("cors");
 
 var userRouter = require("./routes/user.routs");
 var todoRouter = require("./routes/todo.routs");
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(cors());
 
 app.use("/user", userRouter);
 app.use("/todo", todoRouter);
