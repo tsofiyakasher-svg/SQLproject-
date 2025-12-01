@@ -75,20 +75,23 @@ function Todo() {
     }
   }
 
-  //   async function deleteToDo(id) {
-  //     try {
-  //       const response = await fetch(`http://localhost:3000/todos/${id}`, {
-  //         method: "DELETE",
-  //         headers: { "Content-Type": "application/json" },
-  //       });
+  async function deleteToDo(id) {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/todo/delete-todo?user_id=${ActiveUser.id}`,
+        {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
 
-  //       if (!response.ok) throw new Error("failed");
-  //       setData((prev) => prev.filter((item) => item.id !== id));
-  //     } catch (err) {
-  //       console.log("error:", err);
-  //       alert("couldnt delete todo");
-  //     }
-  //   }
+      if (!response.ok) throw new Error("failed");
+      setTodo((prev) => prev.filter((item) => item.id !== id));
+    } catch (err) {
+      console.log("error:", err);
+      alert("couldnt delete todo");
+    }
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -109,7 +112,7 @@ function Todo() {
                   onChange={() => handleCheckboxChange(todo.id)}
                 />
                 {todo.title}
-                {/* <button onClick={() => deleteToDo(todo.id)}>delete</button> */}
+                <button onClick={() => deleteToDo(todo.id)}>delete</button>
               </li>
             ))}
       </ul>
