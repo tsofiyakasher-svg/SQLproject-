@@ -53,27 +53,27 @@ function Todo() {
     }
   }
 
-  //   async function addToDo(title) {
-  //     const newItem = {
-  //       title,
-  //       completed: false,
-  //       userId: "" + ActiveUser.id,
-  //     };
-
-  //     try {
-  //       const res = await fetch("http://localhost:3000/todos", {
-  //         method: "POST",
-  //         headers: { "Content-Type": "application/json" },
-  //         body: JSON.stringify(newItem),
-  //       });
-  //       if (!res.ok) throw new Error();
-  //       const createdtodo = await res.json();
-  //       setData((prev) => [...prev, createdtodo]);
-  //     } catch (err) {
-  //       console.error(err);
-  //       alert("couldnt add to do");
-  //     }
-  //   }
+  async function addToDo(title) {
+    const newItem = {
+      title,
+      completed: false,
+      user_id: "" + ActiveUser.id,
+    };
+    console.log(newItem.user_id);
+    try {
+      const res = await fetch("http://localhost:3000/todo/add-todo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newItem),
+      });
+      if (!res.ok) throw new Error();
+      const createdtodo = await res.json();
+      setTodo((prev) => [...prev, createdtodo]);
+    } catch (err) {
+      console.error(err);
+      alert("couldnt add to do");
+    }
+  }
 
   //   async function deleteToDo(id) {
   //     try {
@@ -90,24 +90,11 @@ function Todo() {
   //     }
   //   }
 
-  //   function handleSubmit(e) {
-  //     e.preventDefault();
-  //     addToDo(value);
-  //     setValue("");
-  //   }
-
-  //   function handleSort(e) {
-  //     const option = e.target.value;
-  //     let sorted = [...data];
-
-  //     if (option === "alpha")
-  //       sorted.sort((a, b) => a.title.localeCompare(b.title));
-  //     else if (option === "completed")
-  //       sorted.sort((a, b) => a.completed - b.completed);
-  //     else if (option === "random") sorted.sort(() => Math.random() - 0.5);
-
-  //     setData(sorted);
-  //   }
+  function handleSubmit(e) {
+    e.preventDefault();
+    addToDo(value);
+    setValue("");
+  }
 
   return (
     <div>
@@ -126,20 +113,20 @@ function Todo() {
               </li>
             ))}
       </ul>
+
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="add">Add to do</label>
+        <input
+          id="add"
+          type="text"
+          value={value}
+          placeholder="new to do"
+          onChange={(e) => setValue(e.target.value)}
+        />
+        <button type="submit">Add</button>
+      </form>
     </div>
   );
 }
 
 export default Todo;
-
-//   <form onSubmit={handleSubmit}>
-//     <label htmlFor="add">Add to do</label>
-//     <input
-//       id="add"
-//       type="text"
-//       value={value}
-//       placeholder="new to do"
-//       onChange={(e) => setValue(e.target.value)}
-//     />
-//     <button type="submit">Add</button>
-//   </form>

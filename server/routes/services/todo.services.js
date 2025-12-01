@@ -11,6 +11,8 @@ function getAllTodos(reqId) {
 }
 
 function createTodo(user_id, title, completed) {
+  if (completed === true) completed = 1;
+  if (completed === false) completed = 0;
   const query = ` INSERT INTO todo (user_id,title,completed) VALUES (${user_id},'${title}', '${completed}')`;
   return new Promise((resolve, reject) => {
     connection.query(query, (err, result) => {
