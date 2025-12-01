@@ -1,2 +1,12 @@
 const connection = require("../../db/connection");
-module.exports = {};
+
+function getPassword(userName) {
+  const query = `SELECT p.password FROM user AS u INNER JOIN password AS p ON u.id = p.user_id WHERE u.user_name = '${userName}';`;
+  return new Promise((resolve, reject) => {
+    connection.query(query, (err, result) => {
+      if (err) return reject(err);
+      resolve(result);
+    });
+  });
+}
+module.exports = { getPassword };
